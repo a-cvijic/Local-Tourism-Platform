@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+DigiCertGlobalRootCA.crt.pem
+.DS_Store
