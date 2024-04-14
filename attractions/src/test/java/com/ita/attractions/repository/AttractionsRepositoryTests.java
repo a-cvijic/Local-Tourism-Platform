@@ -1,7 +1,6 @@
-package com.ita.attractions;
+package com.ita.attractions.repository;
 
 import com.ita.attractions.model.Attractions;
-import com.ita.attractions.repository.AttractionsRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
