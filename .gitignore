@@ -23,6 +23,7 @@
 ### VS Code ###
 .vscode/
 
+<<<<<<< HEAD:.gitignore
 ### Compiled class files ###
 *.class
 
@@ -52,3 +53,7 @@ target/
 !**/src/test/**/target/
 .mvn/wrapper/maven-wrapper.jar
 HELP.md
+=======
+DigiCertGlobalRootCA.crt.pem
+.DS_Store
+>>>>>>> bb7d1e3dfab7b130c1d76c632ec43032a733b1a8:attractions/.gitignore
