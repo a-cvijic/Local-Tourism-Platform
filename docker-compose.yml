@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  attractions-service:
+    image: attractions-service:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - attractions-data:/app/data
+      - ./logs:/app/logs
+    networks:
+      - attractions-network
+
+volumes:
+  attractions-data:
+
+networks:
+  attractions-network:
+    driver: bridge

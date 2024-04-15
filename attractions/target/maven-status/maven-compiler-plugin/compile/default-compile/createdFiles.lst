@@ -1,0 +1,4 @@
+com/ita/attractions/repository/AttractionsRepository.class
+com/ita/attractions/controller/AttractionsController.class
+com/ita/attractions/model/Attractions.class
+com/ita/attractions/AttractionsApplication.class
