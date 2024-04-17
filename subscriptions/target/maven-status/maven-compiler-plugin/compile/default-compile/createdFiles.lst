@@ -1,3 +1,5 @@
-com/ita/GreetingResource.class
-com/ita/MyLivenessCheck.class
-com/ita/MyEntity.class
+com/ita/repository/SubscriptionRepository.class
+com/ita/model/Subscription.class
+com/ita/service/SubscriptionService.class
+com/ita/repository/SubscriptionRepositoryImpl.class
+com/ita/controller/SubscriptionController.class
