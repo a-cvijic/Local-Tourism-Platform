@@ -2,31 +2,41 @@ package com.ita.service;
 
 import com.ita.model.Subscription;
 import com.ita.repository.SubscriptionRepository;
-import io.smallrye.mutiny.Multi;
-import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
+import java.util.List;
 
 @ApplicationScoped
 public class SubscriptionService {
     private final SubscriptionRepository subscriptionRepository;
 
+    @Inject
     public SubscriptionService(SubscriptionRepository subscriptionRepository) {
         this.subscriptionRepository = subscriptionRepository;
     }
 
-    public Uni<Subscription> getSubscriptionById(Long id) {
+    public Subscription getSubscriptionById(Long id) {
         return subscriptionRepository.findById(id);
     }
 
-    public Multi<Subscription> getAllSubscriptions() {
-        return subscriptionRepository.findAll();
+    public List<Subscription> getAllSubscriptions() {
+        return subscriptionRepository.listAll();
     }
 
-    public Uni<Subscription> createSubscription(Subscription subscription) {
-        return subscriptionRepository.save(subscription);
+    @Transactional
+    public Subscription createSubscription(Subscription subscription) {
+        subscriptionRepository.persist(subscription);
+        return subscription;
     }
 
-    public Uni<Void> deleteSubscription(Long id) {
-        return subscriptionRepository.deleteById(id);
+    @Transactional
+    public Subscription updateSubscription(Subscription subscription) {
+        return subscriptionRepository.getEntityManager().merge(subscription);
+    }
+
+    @Transactional
+    public void deleteSubscription(Long id) {
+        subscriptionRepository.deleteById(id);
     }
 }
