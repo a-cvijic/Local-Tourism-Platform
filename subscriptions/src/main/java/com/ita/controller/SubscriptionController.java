@@ -17,6 +17,9 @@ public class SubscriptionController {
     private final SubscriptionService subscriptionService;
 
     @Inject
+    jakarta.jms.JMSContext jmsContext;
+
+    @Inject
     public SubscriptionController(SubscriptionService subscriptionService) {
         this.subscriptionService = subscriptionService;
     }
@@ -42,6 +45,10 @@ public class SubscriptionController {
         subscription.setUserId(subscriptionData.getUserId());
         subscription.setAttractionId(subscriptionData.getAttractionId());
         Subscription createdSubscription = subscriptionService.createSubscription(subscription);
+
+        // Send message to ActiveMQ queue
+        jmsContext.createProducer().send(jmsContext.createQueue("subscriptions"), createdSubscription.toString());
+
         return Response.created(URI.create("/subscriptions/" + createdSubscription.id)).entity(createdSubscription)
                 .build();
     }
@@ -56,6 +63,10 @@ public class SubscriptionController {
         subscription.setUserId(subscriptionData.getUserId());
         subscription.setAttractionId(subscriptionData.getAttractionId());
         subscriptionService.updateSubscription(subscription);
+
+        // Send message to ActiveMQ queue
+        jmsContext.createProducer().send(jmsContext.createQueue("subscriptions"), subscription.toString());
+
         return Response.ok(subscription).build();
     }
 
