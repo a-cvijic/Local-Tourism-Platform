@@ -1,18 +1,43 @@
 version: '3.8'
+
 services:
+  users-service:
+    build:
+      context: ./users
+      dockerfile: src/main/docker/Dockerfile.jvm
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./users/logs:/deployments/logs
+    networks:
+      - users-network
+
   attractions-service:
-    image: attractions-service:latest
+    build:
+      context: attractions
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     volumes:
-      - attractions-data:/app/data
-      - ./logs:/app/logs
+      - ./attractions/logs:/app/logs
     networks:
       - attractions-network
 
-volumes:
-  attractions-data:
+  subscriptions-service:
+    build:
+      context: ./subscriptions
+      dockerfile: src/main/docker/Dockerfile.jvm
+    ports:
+      - "8082:8080"
+    volumes:
+      - ./subscriptions/logs:/app/logs
+    networks:
+      - subscriptions-network
 
 networks:
+  users-network:
+    driver: bridge
   attractions-network:
+    driver: bridge
+  subscriptions-network:
     driver: bridge
