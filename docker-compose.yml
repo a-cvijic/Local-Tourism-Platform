@@ -10,7 +10,7 @@ services:
     volumes:
       - ./users/logs:/deployments/logs
     networks:
-      - users-network
+      - gateway-network
 
   attractions-service:
     build:
@@ -21,7 +21,7 @@ services:
     volumes:
       - ./attractions/logs:/app/logs
     networks:
-      - attractions-network
+      - gateway-network
 
   subscriptions-service:
     build:
@@ -32,12 +32,17 @@ services:
     volumes:
       - ./subscriptions/logs:/app/logs
     networks:
-      - subscriptions-network
+      - gateway-network
+
+  api-gateway:
+    build:
+      context: ./web-gateway
+      dockerfile: Dockerfile.nginx
+    ports:
+      - "80:80"
+    networks:
+      - gateway-network
 
 networks:
-  users-network:
-    driver: bridge
-  attractions-network:
-    driver: bridge
-  subscriptions-network:
+  gateway-network:
     driver: bridge
