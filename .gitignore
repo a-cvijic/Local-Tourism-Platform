@@ -4,6 +4,7 @@ git rm --cached DigiCertGlobalRootCA.crt.pem
 
 # Dependency directories
 node_modules/
+target/
 
 # Logs
 logs
