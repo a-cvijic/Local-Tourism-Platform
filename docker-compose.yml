@@ -43,6 +43,15 @@ services:
     networks:
       - gateway-network
 
+  mobile-gateway:
+    build:
+      context: ./mobile-gateway
+      dockerfile: Dockerfile.nginx
+    ports:
+      - "81:80"
+    networks:
+      - gateway-network
+
 networks:
   gateway-network:
     driver: bridge
