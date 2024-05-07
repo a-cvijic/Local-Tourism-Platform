@@ -6,7 +6,7 @@ function AttractionsList() {
 
   useEffect(() => {
     axios
-      .get("/api/attractions")
+      .get("/attractions/api/attractions")
       .then((response) => setAttractions(response.data))
       .catch((error) => console.error("Error fetching attractions", error));
   }, []);

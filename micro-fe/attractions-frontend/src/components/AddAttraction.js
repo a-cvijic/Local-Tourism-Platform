@@ -8,7 +8,7 @@ function AddAttraction() {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("/api/attractions", { name, location })
+      .post("/attractions/api/attractions", { name, location })
       .then((response) => {
         console.log("Attraction added", response.data);
         setName("");
