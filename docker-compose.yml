@@ -52,11 +52,19 @@ services:
     networks:
       - gateway-network
 
-  frontend:
+  attractions-frontend:
     build:
       context: ./micro-fe/attractions
     ports:
-      - "3000:3000"
+      - "4001:4001"
+    networks:
+      - gateway-network
+
+  subscriptions-frontend:
+    build:
+      context: ./micro-fe/subscriptions
+    ports:
+      - "4002:4002"
     networks:
       - gateway-network
 

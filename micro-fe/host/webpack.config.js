@@ -46,6 +46,7 @@ module.exports = (_, argv) => ({
       filename: "remoteEntry.js",
       remotes: {
         attractions: "attractions@http://localhost:4001/remoteEntry.js",
+        subscriptions: "subscriptions@http://localhost:4002/remoteEntry.js",
       },
       exposes: {},
       shared: {

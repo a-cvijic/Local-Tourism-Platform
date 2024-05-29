@@ -1,9 +1,10 @@
-import React, { Suspense, lazy } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-
 import "./index.scss";
 
-const Attractions = lazy(() => import("attractions/Attractions"));
+// Import components from the micro frontends
+const Attractions = React.lazy(() => import("attractions/Attractions"));
+const Subscriptions = React.lazy(() => import("subscriptions/Subscriptions"));
 
 const App = () => (
   <div className="mt-10 text-3xl mx-auto max-w-6xl">
@@ -11,10 +12,18 @@ const App = () => (
     <div>Framework: react</div>
     <div>Language: JavaScript</div>
     <div>CSS: Tailwind</div>
-    <Suspense fallback={<div>Loading...</div>}>
+    <React.Suspense fallback="Loading Attractions...">
       <Attractions />
-    </Suspense>
+    </React.Suspense>
+    <React.Suspense fallback="Loading Subscriptions...">
+      <Subscriptions />
+    </React.Suspense>
   </div>
 );
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("app")
+);
