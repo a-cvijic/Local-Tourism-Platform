@@ -5,18 +5,15 @@ const deps = require("./package.json").dependencies;
 
 module.exports = (_, argv) => ({
   output: {
-    publicPath: "http://localhost:4000/",
+    publicPath: "http://localhost:4002/",
   },
-
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
   },
-
   devServer: {
-    port: 4000,
+    port: 4002,
     historyApiFallback: true,
   },
-
   module: {
     rules: [
       {
@@ -39,15 +36,13 @@ module.exports = (_, argv) => ({
       },
     ],
   },
-
   plugins: [
     new ModuleFederationPlugin({
-      name: "host",
+      name: "subscriptions",
       filename: "remoteEntry.js",
-      remotes: {
-        subscriptions: "subscriptions@http://localhost:4002/remoteEntry.js",
+      exposes: {
+        "./Subscriptions": "./src/Subscriptions",
       },
-      exposes: {},
       shared: {
         ...deps,
         react: {

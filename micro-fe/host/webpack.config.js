@@ -7,16 +7,13 @@ module.exports = (_, argv) => ({
   output: {
     publicPath: "http://localhost:4000/",
   },
-
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
   },
-
   devServer: {
     port: 4000,
     historyApiFallback: true,
   },
-
   module: {
     rules: [
       {
@@ -39,7 +36,6 @@ module.exports = (_, argv) => ({
       },
     ],
   },
-
   plugins: [
     new ModuleFederationPlugin({
       name: "host",
