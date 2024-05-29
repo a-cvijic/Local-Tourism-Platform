@@ -47,9 +47,8 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "attractions",
       filename: "remoteEntry.js",
-      remotes: {},
       exposes: {
-        "./axios": "axios",
+        "./Attractions": "./src/attractions",
       },
       shared: {
         ...deps,

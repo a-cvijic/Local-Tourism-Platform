@@ -1,5 +1,5 @@
 import React from 'react';
-import Attractions from './Attractions';
+import Attractions from './attractions';
 
 const App = () => (
   <div>
