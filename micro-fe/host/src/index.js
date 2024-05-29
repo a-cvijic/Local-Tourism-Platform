@@ -5,6 +5,7 @@ import "./index.scss";
 // Import components from the micro frontends
 const Attractions = React.lazy(() => import("attractions/Attractions"));
 const Subscriptions = React.lazy(() => import("subscriptions/Subscriptions"));
+const Users = React.lazy(() => import("users/Users"));
 
 const App = () => (
   <div className="mt-10 text-3xl mx-auto max-w-6xl">
@@ -17,6 +18,9 @@ const App = () => (
     </React.Suspense>
     <React.Suspense fallback="Loading Subscriptions...">
       <Subscriptions />
+    </React.Suspense>
+    <React.Suspense fallback="Loading Users...">
+      <Users />
     </React.Suspense>
   </div>
 );

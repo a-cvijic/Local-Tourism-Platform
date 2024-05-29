@@ -52,6 +52,14 @@ services:
     networks:
       - gateway-network
 
+  host-frontend:
+    build:
+      context: ./micro-fe/host
+    ports:
+      - "4000:4000"
+    networks:
+      - gateway-network
+
   attractions-frontend:
     build:
       context: ./micro-fe/attractions
@@ -65,6 +73,14 @@ services:
       context: ./micro-fe/subscriptions
     ports:
       - "4002:4002"
+    networks:
+      - gateway-network
+
+  users-frontend:
+    build:
+      context: ./micro-fe/users
+    ports:
+      - "4003:4003"
     networks:
       - gateway-network
 
