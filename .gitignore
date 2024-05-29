@@ -1,7 +1,3 @@
-git rm --cached .DS_Store
-git rm --cached -r .vscode/
-git rm --cached DigiCertGlobalRootCA.crt.pem
-
 # Dependency directories
 node_modules/
 target/
@@ -48,6 +44,9 @@ build/Release
 # dotenv environment variables file
 .env
 .env.test
+.env.local
+.env.development.local
+.env.production.local
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -63,7 +62,7 @@ dist
 
 # Gatsby files
 .cache/
-# Comment in the public line in if your project uses Gatsby and *not* in a sub-directory
+# Comment in the public line if your project uses Gatsby and *not* in a sub-directory
 # public
 
 # Vue-cli build output
@@ -106,5 +105,44 @@ temp/
 # DigiCertGlobalRootCA.crt.pem
 DigiCertGlobalRootCA.crt.pem
 
-# .DS_Store
+# macOS
 .DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.trash-*
+
+# Other editors
+*.kate-swp
+
+# Bit specific
+.bit
+.dist
+
+# Visual Studio Code workspace
+*.code-workspace
+
+# Python virtual environment
+.venv
+
+# Yarn 2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Log4j log files
+log4j.log
+log4j2.log
+
+# JetBrains
+/.idea/
+*.iws
+*.iml
+*.ipr
